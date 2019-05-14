@@ -1,0 +1,5 @@
+{
+  "supportES6": true,
+  "providedInRoot": "true",
+  "ngVersion": "7.2.15"
+}
