@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {WateringComponent} from './watering/watering.component';
+import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
-  {path: 'watering', component: WateringComponent}
+  {path: 'watering', component: WateringComponent},
+  {path: 'login', component: LoginComponent},
 ];
 
 @NgModule({
