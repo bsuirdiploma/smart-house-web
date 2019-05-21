@@ -23,7 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
+              "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [],
@@ -133,5 +133,17 @@
       }
     }
   },
-  "defaultProject": "smart-house-client"
+  "defaultProject": "smart-house-client",
+  "schematics": {
+    "@schematics/angular:component": {
+      "spec": false,
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "spec": false
+    },
+    "@schematics/angular:module": {
+      "spec": false
+    }
+  }
 }

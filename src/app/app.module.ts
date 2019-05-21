@@ -2,16 +2,20 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {WateringComponent} from './watering/watering.component';
+import {CreateWateringComponent} from './component/watering/create-watering/create-watering.component';
 import {AppRoutingModule} from './app-routing.module';
 import {NavbarComponent} from './navbar/navbar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {LoginComponent} from './login/login.component';
+import {LoginComponent} from './component/login/login.component';
+import {WateringComponent} from './component/watering/list-watering/watering.component';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {CronEditorModule} from 'ngx-cron-editor';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CreateWateringComponent,
     WateringComponent,
     NavbarComponent,
     LoginComponent
@@ -21,7 +25,9 @@ import {LoginComponent} from './login/login.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MDBBootstrapModule.forRoot(),
+    CronEditorModule
   ],
   bootstrap: [AppComponent]
 })

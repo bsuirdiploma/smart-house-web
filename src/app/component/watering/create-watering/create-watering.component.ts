@@ -1,14 +1,14 @@
 import {Component} from '@angular/core';
-import {WateringManagementService} from '../modules/swagger/generated/watering/api/wateringManagement.service';
+import {WateringManagementService} from '../../../modules/swagger/generated/watering/api/wateringManagement.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs';
 
 @Component({
   selector: 'app-watering',
-  templateUrl: './watering.component.html'
+  templateUrl: './create-watering.component.html'
 })
-export class WateringComponent {
+export class CreateWateringComponent {
 
   readonly email = new FormControl('', []);
   readonly name = new FormControl('', []);

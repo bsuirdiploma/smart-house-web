@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {AuthorizationManagementService} from '../modules/swagger/generated/user/api/authorizationManagement.service';
+import {AuthorizationManagementService} from '../../modules/swagger/generated/user/api/authorizationManagement.service';
 
 @Component({
   selector: 'app-login',
