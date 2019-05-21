@@ -1,0 +1,38 @@
+<div id="watering">
+  <h3 class="text-center text-white pt-5"></h3>
+  <div class="container">
+    <div id="watering-row" class="row justify-content-center align-items-center">
+      <div id="watering-column" class="col-md-6">
+        <div id="watering-box" class="col-md-10">
+          <form id="watering-form" (ngSubmit)="submit()" >
+            <h3 class="text-center text-info">Пункт отопления</h3>
+            <br>
+            <div class="form-group">
+              <label for="name" class="text-info">Название точки отопления:</label><br>
+              <input type="text" id="name" [formControl]="name">
+            </div>
+            <div class="form-group">
+              <label for="thermometerPortName" class="text-info">Имя порта термометра:</label><br>
+              <input type="text" id="thermometerPortName" [formControl]="thermometerPortName">
+            </div>
+            <div class="form-group">
+              <label for="collectorPortName" class="text-info">Имя порта коллектора:</label><br>
+              <input type="text" id="collectorPortName" [formControl]="collectorPortName">
+            </div>
+            <div class="form-group">
+              <label for="collectorPinNumber" class="text-info">Номер контура отопления:</label><br>
+              <input type="text" id="collectorPinNumber" [formControl]="collectorPinNumber">
+            </div>
+            <div class="form-group">
+              <label for="requiredTemperature" class="text-info">Необходимая температура:</label><br>
+              <input type="text" id="requiredTemperature" [formControl]="requiredTemperature">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-info btn-md">Создать</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

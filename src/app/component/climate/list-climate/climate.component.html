@@ -1,37 +1,45 @@
 <!-- Editable table -->
 <div class="card">
-  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Editable table</h3>
   <div class="card-body">
     <div id="table" class="table-editable">
       <span class="table-add float-right mb-3 mr-2">
-        <a class="text-success" (click)="add()">
+        <a class="text-success" routerLink="/climate/create">
           <mdb-icon fas icon="plus" size="2x"></mdb-icon>
         </a>
       </span>
       <table class="table table-bordered table-responsive-md table-striped text-center">
         <tr>
-          <th class="text-center">Название пункта полива</th>
-          <th class="text-center">Расположение</th>
-          <th class="text-center">Имя порта передатчика</th>
-          <th class="text-center">Расписание полива</th>
-          <th class="text-center">Длительность полива</th>
-          <th class="text-center">Отменить полив</th>
+          <th class="text-center">Название точки отопления</th>
+          <th class="text-center">Имя порта термометра</th>
+          <th class="text-center">Имя порта коллектора</th>
+          <th class="text-center">Номер контура отопления</th>
+          <th class="text-center">Текущая температура</th>
+          <th class="text-center">Необходимая температура</th>
+          <th class="text-center">Состояние контура</th>
+          <th class="text-center">Отключить помещение</th>
         </tr>
-        <tr *ngFor="let watering of wateringList; let id = index">
+        <tr *ngFor="let climate of climateList; let id = index">
           <td>
-            <span contenteditable="false">{{watering.name}}</span>
+            <span contenteditable="false">{{climate.name}}</span>
           </td>
           <td>
-            <span contenteditable="false">{{watering.location}}</span>
+            <span contenteditable="false">{{climate.thermometerPortName}}</span>
           </td>
           <td>
-            <span contenteditable="false" (keyup)="changeValue(id, 'companyName', $event)" (blur)="updateList(id, 'companyName', $event)">{{watering.companyName}}</span>
+            <span contenteditable="false">{{climate.collectorPortName}}</span>
           </td>
           <td>
-            <span contenteditable="false" (keyup)="changeValue(id, 'country', $event)" (blur)="updateList(id, 'country', $event)">{{watering.country}}</span>
+            <span contenteditable="false">{{climate.collectorPinNumber}}</span>
           </td>
           <td>
-            <span contenteditable="true" (keyup)="changeValue(id, 'city', $event)" (blur)="updateList(id, 'city', $event)">{{watering.city}}</span>
+            <span contenteditable="false">{{climate.currentTemperature}}</span>
+          </td>
+          <td>
+            <span contenteditable="true"
+                  (blur)="updateList(id, 'requiredTemperature', $event)">{{climate.requiredTemperature}}</span>
+          </td>
+          <td>
+            <span contenteditable="false">{{climate.heaterOn ? 'Открыт' : 'Закрыт'}}</span>
           </td>
           <td>
             <span class="table-remove">

@@ -27,10 +27,12 @@
             <span contenteditable="false">{{watering.wateringPortName}}</span>
           </td>
           <td>
-            <span contenteditable="false">{{watering.wateringCron}}</span>
+            <span contenteditable="true"
+                  (blur)="updateList(number, 'wateringCron', $event)">{{watering.wateringCron}}</span>
           </td>
           <td>
-            <span contenteditable="false">{{watering.wateringDuration}}</span>
+            <span contenteditable="true"
+                  (blur)="updateList(number, 'wateringDuration', $event)">{{watering.wateringDuration}}</span>
           </td>
           <td>
             <span class="table-remove">

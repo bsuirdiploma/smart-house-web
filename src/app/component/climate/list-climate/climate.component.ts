@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Watering} from '../../../modules/swagger/generated/watering/model/watering';
-import {WateringManagementService} from '../../../modules/swagger/generated/watering/api/wateringManagement.service';
 import {AuthService} from '../../../service/authorization-service/auth-service';
+import {ClimateZone} from '../../../modules/swagger/generated/climate/model/climateZone';
+import {ClimateZoneManagementService} from '../../../modules/swagger/generated/climate/api/climateZoneManagement.service';
 
 @Component({
   selector: 'app-climate',
@@ -9,47 +9,36 @@ import {AuthService} from '../../../service/authorization-service/auth-service';
   styleUrls: ['./climate.component.scss']
 })
 export class ClimateComponent implements OnInit {
-  editField: string;
-  wateringList: Array<Watering>;
-  awaitingPersonList: Array<any> = [
-    {id: 6, name: 'George Vega', age: 28, companyName: 'Classical', country: 'Russia', city: 'Moscow'},
-    {id: 7, name: 'Mike Low', age: 22, companyName: 'Lou', country: 'USA', city: 'Los Angeles'},
-    {id: 8, name: 'John Derp', age: 36, companyName: 'Derping', country: 'USA', city: 'Chicago'},
-    {id: 9, name: 'Anastasia John', age: 21, companyName: 'Ajo', country: 'Brazil', city: 'Rio'},
-    {id: 10, name: 'John Maklowicz', age: 36, companyName: 'Mako', country: 'Poland', city: 'Bialystok'},
-  ];
+  climateList: Array<ClimateZone>;
 
-
-  constructor(private wateringManagementService: WateringManagementService) {
+  constructor(private climateManagementService: ClimateZoneManagementService) {
   }
 
   ngOnInit(): void {
-
-    this.wateringManagementService.findAllWaterings(AuthService.getToken(), null, null).subscribe(
-      value => this.wateringList = value.content
+    this.climateManagementService.findAllClimateZones(AuthService.getToken(), null, null).subscribe(
+      value => this.climateList = value.content
     );
 
   }
 
-  updateList(id: number, property: string, event: any) {
-    const editField = event.target.textContent;
-    this.wateringList[id][property] = editField;
+  remove(listNumber: any) {
+    this.climateManagementService.deleteClimateZoneById(this.climateList[listNumber].id, AuthService.getToken()).subscribe(
+      () => {
+        this.climateList.reduce(listNumber);
+      }
+    );
   }
 
-  remove(id: any) {
-    this.awaitingPersonList.push(this.wateringList[id]);
-    this.wateringList.splice(id, 1);
+  updateList(listNumber: number, property: string, event: any) {
+    this.climateList[listNumber][property] = event.target.textContent;
+
+    const climate = this.climateList[listNumber];
+
+    this.climateManagementService.setTemperatureByClimateZoneId(climate.id, climate.requiredTemperature, AuthService.getToken()).subscribe(
+      value => console.log(value),
+      value => console.log(value)
+    );
   }
 
-  add() {
-    if (this.awaitingPersonList.length > 0) {
-      const person = this.awaitingPersonList[0];
-      this.wateringList.push(person);
-      this.awaitingPersonList.splice(0, 1);
-    }
-  }
-
-  changeValue(id: number, property: string, event: any) {
-    this.editField = event.target.textContent;
-  }
 }
+

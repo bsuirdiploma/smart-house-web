@@ -4,7 +4,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {AuthService} from '../../../service/authorization-service/auth-service';
 
 @Component({
-  selector: 'app-watering',
+  selector: 'app-watering-create',
   templateUrl: './create-watering.component.html'
 })
 export class CreateWateringComponent {

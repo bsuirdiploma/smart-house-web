@@ -11,12 +11,16 @@ import {LoginComponent} from './component/login/login.component';
 import {WateringComponent} from './component/watering/list-watering/watering.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {CronEditorModule} from 'ngx-cron-editor';
+import {CreateClimateComponent} from './component/climate/create-climate/create-climate.component';
+import {ClimateComponent} from './component/climate/list-climate/climate.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateWateringComponent,
     WateringComponent,
+    CreateClimateComponent,
+    ClimateComponent,
     NavbarComponent,
     LoginComponent
   ],
