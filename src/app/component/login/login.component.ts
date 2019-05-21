@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AuthorizationManagementService} from '../../modules/swagger/generated/user/api/authorizationManagement.service';
+import {AuthService} from '../../service/authorization-service/auth-service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,7 @@ export class LoginComponent {
     this.authorizationManagementService.authenticate(this.form.get('login').value, this.form.get('password').value)
       .subscribe(
         value => {
-          localStorage.setItem('token', value.token);
+          AuthService.storeToken(value.token);
         },
         value => console.log(value),
       );

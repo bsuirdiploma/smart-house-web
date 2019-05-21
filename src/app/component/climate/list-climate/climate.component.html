@@ -1,9 +1,10 @@
 <!-- Editable table -->
 <div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Editable table</h3>
   <div class="card-body">
     <div id="table" class="table-editable">
       <span class="table-add float-right mb-3 mr-2">
-        <a class="nav-link" routerLink="/watering/create">
+        <a class="text-success" (click)="add()">
           <mdb-icon fas icon="plus" size="2x"></mdb-icon>
         </a>
       </span>
@@ -16,7 +17,7 @@
           <th class="text-center">Длительность полива</th>
           <th class="text-center">Отменить полив</th>
         </tr>
-        <tr *ngFor="let watering of wateringList; let number = index">
+        <tr *ngFor="let watering of wateringList; let id = index">
           <td>
             <span contenteditable="false">{{watering.name}}</span>
           </td>
@@ -24,18 +25,17 @@
             <span contenteditable="false">{{watering.location}}</span>
           </td>
           <td>
-            <span contenteditable="false">{{watering.wateringPortName}}</span>
+            <span contenteditable="false" (keyup)="changeValue(id, 'companyName', $event)" (blur)="updateList(id, 'companyName', $event)">{{watering.companyName}}</span>
           </td>
           <td>
-            <span contenteditable="false">{{watering.wateringCron}}</span>
+            <span contenteditable="false" (keyup)="changeValue(id, 'country', $event)" (blur)="updateList(id, 'country', $event)">{{watering.country}}</span>
           </td>
           <td>
-            <span contenteditable="false">{{watering.wateringDuration}}</span>
+            <span contenteditable="true" (keyup)="changeValue(id, 'city', $event)" (blur)="updateList(id, 'city', $event)">{{watering.city}}</span>
           </td>
           <td>
             <span class="table-remove">
-              <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0"
-                      (click)="remove(number)">Remove</button>
+              <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)">Remove</button>
             </span>
           </td>
         </tr>

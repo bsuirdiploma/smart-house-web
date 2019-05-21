@@ -4,11 +4,11 @@ import {WateringManagementService} from '../../../modules/swagger/generated/wate
 import {AuthService} from '../../../service/authorization-service/auth-service';
 
 @Component({
-  selector: 'app-watering',
-  templateUrl: './watering.component.html',
-  styleUrls: ['./watering.component.scss']
+  selector: 'app-climate',
+  templateUrl: './climate.component.html',
+  styleUrls: ['./climate.component.scss']
 })
-export class WateringComponent implements OnInit {
+export class ClimateComponent implements OnInit {
   editField: string;
   wateringList: Array<Watering>;
   awaitingPersonList: Array<any> = [
@@ -31,13 +31,14 @@ export class WateringComponent implements OnInit {
 
   }
 
-  remove(listNumber: any) {
-    this.wateringManagementService.deleteWateringById(this.wateringList[listNumber].id, AuthService.getToken()).subscribe(
-      value => {
-        console.log(value);
-        this.wateringList.reduce(listNumber);
-      }
-    );
+  updateList(id: number, property: string, event: any) {
+    const editField = event.target.textContent;
+    this.wateringList[id][property] = editField;
+  }
+
+  remove(id: any) {
+    this.awaitingPersonList.push(this.wateringList[id]);
+    this.wateringList.splice(id, 1);
   }
 
   add() {
@@ -48,4 +49,7 @@ export class WateringComponent implements OnInit {
     }
   }
 
+  changeValue(id: number, property: string, event: any) {
+    this.editField = event.target.textContent;
+  }
 }

@@ -1,9 +1,38 @@
-<p>
-  watering not works!
-</p>
-
-<form (ngSubmit)="submit()">
-
-  <input [formControl]="email">
-  <button>Submit</button>
-</form>
+<div id="watering">
+  <h3 class="text-center text-white pt-5"></h3>
+  <div class="container">
+    <div id="watering-row" class="row justify-content-center align-items-center">
+      <div id="watering-column" class="col-md-6">
+        <div id="watering-box" class="col-md-10">
+          <form id="watering-form" (ngSubmit)="submit()" >
+            <h3 class="text-center text-info">Пункт полива</h3>
+            <br>
+            <div class="form-group">
+              <label for="name" class="text-info">Название пункта полива</label><br>
+              <input type="text" id="name" [formControl]="name">
+            </div>
+            <div class="form-group">
+              <label for="location" class="text-info">Расположение:</label><br>
+              <input type="text" id="location" [formControl]="location">
+            </div>
+            <div class="form-group">
+              <label for="wateringPortName" class="text-info">Имя порта передатчика:</label><br>
+              <input type="text" id="wateringPortName" [formControl]="wateringPortName">
+            </div>
+            <div class="form-group">
+              <label for="wateringCron" class="text-info">Расписание полива:</label><br>
+              <input type="text" id="wateringCron" [formControl]="wateringCron">
+            </div>
+            <div class="form-group">
+              <label for="wateringDuration" class="text-info">Длительность полива:</label><br>
+              <input type="text" id="wateringDuration" [formControl]="wateringDuration">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-info btn-md">Создать</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {WateringManagementService} from '../../../modules/swagger/generated/watering/api/wateringManagement.service';
 import {FormControl, FormGroup} from '@angular/forms';
-import {catchError} from 'rxjs/operators';
-import {throwError} from 'rxjs';
+import {AuthService} from '../../../service/authorization-service/auth-service';
 
 @Component({
   selector: 'app-watering',
@@ -10,7 +9,6 @@ import {throwError} from 'rxjs';
 })
 export class CreateWateringComponent {
 
-  readonly email = new FormControl('', []);
   readonly name = new FormControl('', []);
   readonly location = new FormControl('', []);
   readonly wateringPortName = new FormControl('', []);
@@ -18,7 +16,6 @@ export class CreateWateringComponent {
   readonly wateringDuration = new FormControl('', []);
 
   readonly form = new FormGroup({
-    email: this.email,
     name: this.name,
     location: this.location,
     wateringPortName: this.wateringPortName,
@@ -30,13 +27,7 @@ export class CreateWateringComponent {
   }
 
   submit() {
-    this.wateringManagementService.createWatering('sdf'/*localStorage.getItem('token')*/, this.form.value)
-      .pipe(
-        catchError(err => {
-          console.log(err);
-          return throwError(err);
-        })
-      )
+    this.wateringManagementService.createWatering(AuthService.getToken(), this.form.value)
       .subscribe(
         value => console.log(value),
         value => console.log(value),
