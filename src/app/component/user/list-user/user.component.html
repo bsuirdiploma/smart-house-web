@@ -1,0 +1,41 @@
+<!-- Editable table -->
+<div class="card">
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2">
+        <a class="text-success" routerLink="/user/create">
+          <mdb-icon fas icon="plus" size="2x"></mdb-icon>
+        </a>
+      </span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">Пользователь</th>
+          <th class="text-center">Имя</th>
+          <th class="text-center">Фамилия</th>
+          <th class="text-center">Роль</th>
+          <th class="text-center">Логин</th>
+        </tr>
+        <tr *ngFor="let climate of userList; let id = index">
+          <td>
+            <span contenteditable="false">{{climate.name}}</span>
+          </td>
+          <td>
+            <span contenteditable="false">{{climate.surname}}</span>
+          </td>
+          <td>
+            <span contenteditable="false">{{climate.role}}</span>
+          </td>
+          <td>
+            <span contenteditable="false">{{climate.login}}</span>
+          </td>
+          <td>
+            <span class="table-remove">
+              <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)">Remove</button>
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Editable table -->

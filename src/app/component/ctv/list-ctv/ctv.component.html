@@ -1,0 +1,42 @@
+<!-- Editable table -->
+<div class="card">
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2">
+        <a class="text-success" routerLink="/ctv/create">
+          <mdb-icon fas icon="plus" size="2x"></mdb-icon>
+        </a>
+      </span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">Название точки видеонаблюдения</th>
+          <th class="text-center">Месторасположение точки видеонаблюдения</th>
+          <th class="text-center">Видео</th>
+          <th class="text-center">Отключить точку видеонаблюдения</th>
+        </tr>
+        <tr *ngFor="let climate of ctvList; let id = index">
+          <td>
+            <span contenteditable="false">{{climate.name}}</span>
+          </td>
+          <td>
+            <span contenteditable="false">{{climate.location}}</span>
+          </td>
+          <td>
+            <span contenteditable="false">
+              <video width="320" height="240" controls>
+                <source src='{{climate.videoUrl}}' type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </span>
+          </td>
+          <td>
+            <span class="table-remove">
+              <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)">Remove</button>
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Editable table -->

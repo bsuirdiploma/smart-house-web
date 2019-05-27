@@ -13,6 +13,10 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {CronEditorModule} from 'ngx-cron-editor';
 import {CreateClimateComponent} from './component/climate/create-climate/create-climate.component';
 import {ClimateComponent} from './component/climate/list-climate/climate.component';
+import {CreateUserComponent} from './component/user/create-user/create-user.component';
+import {UserComponent} from './component/user/list-user/user.component';
+import {CtvComponent} from './component/ctv/list-ctv/ctv.component';
+import {CreateCtvComponent} from './component/ctv/create-ctv/create-ctv.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,10 @@ import {ClimateComponent} from './component/climate/list-climate/climate.compone
     WateringComponent,
     CreateClimateComponent,
     ClimateComponent,
+    CreateUserComponent,
+    UserComponent,
+    CreateCtvComponent,
+    CtvComponent,
     NavbarComponent,
     LoginComponent
   ],
